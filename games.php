@@ -45,6 +45,7 @@ if(isset($_GET['g']) && !empty($_GET['g'])) {
                     if($gameData["game_platform"] == $platformData["platform_id"]) {
                         ?>
                             <div class="game-card">
+                                <input type="checkbox" />
                                 <div class="game-image" style="background: url('<?php echo $gameData["game_image"]; ?>') center no-repeat; background-size: cover; "></div>
                                 <div class="game-price" style="background: <?php echo $platformData["platform_color"]; ?>">&euro;<?php  echo number_format(((int) $gameData["game_price"])/100, 2); ?></div>
                                 <div class="game-name">
