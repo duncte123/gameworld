@@ -2,6 +2,20 @@ function _(el) {
     return document.getElementById(el);
 }
 
+var checkedItems = [];
+var buttonToggled = false;
+
+function addChecked(item) {
+    if(!buttonToggled) {
+        _("oderBulk").style.padding = "5px";
+        setTimeout( () => {
+            _("oderBulk").style.height = "50px";
+        }, 4);
+        buttonToggled = true;
+    }
+    checkedItems[checkedItems.length] = item;
+}
+
 function sendMailForm() {
     //Disable the submit button
     _("submit").disabled = true;

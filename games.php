@@ -33,19 +33,23 @@ if(isset($_GET['g']) && !empty($_GET['g'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Games | GameWorld</title>
-        <link rel="stylesheet" href="/css/gameworld.css">
+        <link rel="stylesheet" href="/css/gameworld.css" />
+        <link rel="stylesheet" href="/css/checkboxes.css" />
     </head>
     <body>
         <div class="container">
             <?php require("templates/menu.php");
-
+            echo "<div id='oderBulk' onclick='addGamesToCard(checkedItems)' class='platformBar hover'>Add Bulk</div>";
             foreach ($output["platforms"] as $key => $platformData) {
                 echo "<div class='platformBar' style='background: $platformData[platform_color];'>$platformData[platform_name]</div>";
                 foreach ($output["games"] as $GameKey => $gameData) {
                     if($gameData["game_platform"] == $platformData["platform_id"]) {
                         ?>
                             <div class="game-card">
-                                <input type="checkbox" />
+                                <label for="CB_GAME_<?php echo $gameData["game_id"]; ?>" class="left">
+                                    <input type="checkbox" id="CB_GAME_<?php echo $gameData["game_id"]; ?>" class="left" onchange="addChecked(<?php echo $gameData["game_id"]; ?>)" />
+                                    <span class="label-text"></span>
+                                </label>
                                 <div class="game-image" style="background: url('<?php echo $gameData["game_image"]; ?>') center no-repeat; background-size: cover; "></div>
                                 <div class="game-price" style="background: <?php echo $platformData["platform_color"]; ?>">&euro;<?php  echo number_format(((int) $gameData["game_price"])/100, 2); ?></div>
                                 <div class="game-name">
@@ -66,6 +70,10 @@ if(isset($_GET['g']) && !empty($_GET['g'])) {
                 var gameId = game.dataset["gameid"];
                 window.location.replace("/php_parsers/addItemToCard.php?item="+gameId+"&redir=<?php echo $redirVar; ?>");
             }
+            function addGamesToCard(games) {
+                window.location.replace("/php_parsers/addItemToCard.php?item="+games+"&redir=<?php echo $redirVar; ?>");
+            }
         </script>
+        <script src="/js/main.js"></script>
     </body>
 </html>

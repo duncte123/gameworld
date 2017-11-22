@@ -209,6 +209,15 @@ footer {
 .game-card .game-buy-button:active {
     background: #249724;
 }
+#oderBulk {
+    cursor: pointer;
+    background: limegreen;
+    text-align: center;
+    height: 0;
+    padding: 0;
+    transition: height 1s ease;
+    overflow: hidden;
+}
 /* games page */
 
 /* cart */
