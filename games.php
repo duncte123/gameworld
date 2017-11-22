@@ -55,7 +55,7 @@ if(isset($_GET['g']) && !empty($_GET['g'])) {
                                 <div class="game-name">
                                     <h3><?php echo $gameData["game_name"]; ?></h3>
                                 </div>
-                                <div class="game-buy-button hover" style="background: <?php echo $platformData["platform_color"]; ?>" data-gameId="<?php echo $gameData["game_id"]; ?>" onclick="addGameToCard(this);">Order</div>
+                                <div class="game-buy-button hover" style="background: <?php echo $platformData["platform_color"]; ?>" data-gameId="<?php echo $gameData["game_id"]; ?>" onclick="addGameToCard(this);">Add to cart</div>
                             </div>
                         <?php
                     }
